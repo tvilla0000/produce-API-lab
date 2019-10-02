@@ -5,6 +5,7 @@ module.exports = {
     create,
     show,
     edit,
+    editComment,
     del
 
 }
@@ -35,8 +36,13 @@ function show(req, res) {
 function edit(req, res) {
   Movie.findByIdAndUpdate(req.params.id, req.body, {new: true})
     .then(function(movie) {
-      res.status(200).json(movie);
+      res.status(200).json(movie)
   })
+}
+
+function editComment(req, res) {
+  Movie.findById(req.params.id) 
+  
 }
 
 function del(req, res) {
